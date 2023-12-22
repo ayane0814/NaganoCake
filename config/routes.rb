@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     root to: "homes#top"
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :orders, only: [:show]
+    resources :customers, only: [:index, :show, :edit, :update]
   end
   
   scope module: :public do
@@ -19,7 +20,23 @@ Rails.application.routes.draw do
     get "/about" => "homes#about"
     resources :items, only: [:index, :show]
     # 下記オリジナルアクションroutesに出てこないので後でやるのかも？今は必要なのだけ
-    resources :customers, only: [:show, :edit, :update]
+    resources :customers, only: [:show, :edit, :update] do
+      collection do
+        get "confirm"
+        patch "withdraw"
+      end
+    end
+    resources :cart_items, only: [:index, :update, :destroy, :create] do
+      collection do
+        delete "destroy_all"
+      end
+    end
+    resources :orders, only: [:new, :create, :index, :show] do
+      collection do
+        post "confirm"
+        get "thanks"
+      end
+    end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
