@@ -1,7 +1,8 @@
 class Public::CustomersController < ApplicationController
-    before_action :authenticate_coutomer!
+    before_action :authenticate_customer!
     
     def show
+        @customer = current_customer
     end
     
     def edit
@@ -9,4 +10,11 @@ class Public::CustomersController < ApplicationController
     
     def update
     end
+    
+    def confirm
+    end
+    
+    def withdraw
+    end
+    
 end

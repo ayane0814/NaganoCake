@@ -14,7 +14,9 @@
     <header>
       <nav class="navbar">
         <div class="container">
-          <div class="navbar-brand">LOGO</div>
+          <div class="navbar-brand">
+            <%= link_to "LOGO", root_path, class: "text-dark" %>
+          </div>
           <!--左揃えにできず止まっている-->
           <ul class="navbar-nav">
             <% if admin_signed_in? %>
@@ -35,8 +37,7 @@
               </li>
             <% elsif customer_signed_in? %>
               <li class="nav-item">
-                <!--idどうやってもってくるんだっけ-->
-                <%= link_to "マイページ", customer_path(), class: "nav-link text-dark" %>
+                <%= link_to "マイページ", show_customer_path, class: "nav-link text-dark" %>
               </li>
               
               <li class="nav-item">

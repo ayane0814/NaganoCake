@@ -18,9 +18,11 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
     get "/about" => "homes#about"
+    get "customers/information/edit", to: "customers#edit", as: "edit_customer"
+    get "customers/my_page", to: "customers#show", as: "show_customer"
+    patch "customers/information", to: "customers#update", as: "customer"
     resources :items, only: [:index, :show]
-    # 下記オリジナルアクションroutesに出てこないので後でやるのかも？今は必要なのだけ
-    resources :customers, only: [:show, :edit, :update] do
+    resources :customers, except: [:new, :create, :show, :index, :edit, :update, :destroy] do
       collection do
         get "confirm"
         patch "withdraw"
