@@ -4,7 +4,7 @@
     </div>
     
     <div class="row">
-        <%= form_with model: @item, url: "/admin/items/:id", method: :patch do |f| %>
+        <%= form_with model: @item, url: admin_item_path(@item), method: :patch do |f| %>
             <div class="form-group row">
                 <div class="col">
                     <label>商品画像</label>

@@ -35,8 +35,7 @@
                     </label>
                 </div>
                 <div class="col">
-                    <!--税込価格は他で設定してからかも-->
-                    <!--< @item.order_items.uniti_price_including_tax %>-->
+                    <%= @item.add_tax_included_price.to_s(:delimited) %>
                     <span>(<%= @item.price %>)円</span>
                 </div>
             </div>
