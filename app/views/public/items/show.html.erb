@@ -18,8 +18,8 @@
             </div>
             <%= form_with model: @cart_item, url: cart_items_path(@cart_item), method: :post do |f| %>
             <div class="row">
-                <%= f.hidden_field :item_id, :value => @item.id %>
                 <div class="col">
+                    <%= f.hidden_field :item_id, :value => @item.id %>
                     <%= f.select :amount, *[1..10] %>
                 </div>
                 <div class="col">
