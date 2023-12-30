@@ -16,10 +16,17 @@
             <div class="row">
                 ￥<%= @item.add_tax_included_price.to_s(:delimited) %><span>（税込）</span>
             </div>
-            
+            <%= form_with model: @cart_item, url: cart_items_path(@cart_item), method: :post do |f| %>
             <div class="row">
-                <%= link_to "カートに入れる", edit_admin_item_path %>
+                <div class="col">
+                    <%= f.hidden_field :item_id, :value => @item.id %>
+                    <%= f.select :amount, *[1..10] %>
+                </div>
+                <div class="col">
+                    <%= f.submit "カートに入れる" %>
+                </div>
             </div>
+            <% end %>
         </div>
     </div>
 </div>

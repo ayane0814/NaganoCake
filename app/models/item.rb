@@ -13,6 +13,6 @@ class Item < ApplicationRecord
     end
     
     def add_tax_included_price
-        (self.price * 1.10).round
+        (price * 1.1).floor
     end
 end
