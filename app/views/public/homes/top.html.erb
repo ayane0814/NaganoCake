@@ -1,1 +1,32 @@
-<h1>顧客トップページ</h1>
+<div class="container">
+    <div class="row justify-content-center align-items-center" style="background-image: url('<%= asset_path('no_image.jpg') %>'); background-size: cover; background-position: center;">
+        <div class="col-md-6">
+            <p>
+                ようこそ、ながのCAKEへ！</br>
+                このサイトは、ケーキ販売のECサイトになります。</br>
+                会員でない方も商品の閲覧はできますが、</br>
+                購入には会員登録が必要になります。
+            </p>
+        </div>
+    </div>
+    
+    <h2>新着商品</h2>
+    <div class="row">
+        <% @items.each do |item| %>
+        <div class="col-md-3">
+            <%= link_to(item_path(item.id)) do %>
+                <div>
+                    <%= image_tag item.get_item_image(100,100) %>
+                </div>
+                <label>
+                    <%= item.name %>
+                </label>
+                <div>
+                    <span>¥</span><%= item.add_tax_included_price.to_s(:delimited) %>
+                </div>
+            <% end %>
+        </div>
+        <% end %>
+    </div>
+    <%= link_to "全ての商品を見る＞", items_path %>
+</div>
