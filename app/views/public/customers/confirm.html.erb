@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="row">
+        <h5>
+            本当に退会しますか？</br></br>
+            退会すると、会員登録情報や</br>
+            これまでの購入履歴が閲覧できなくなります。</br>
+            退会する場合は、「大会する」をクリックしてください。
+        </h5>
+    </div>
+    <div class="row">
+        <%= link_to "退会しない", show_customer_path %>
+        <%= link_to "退会する", withdraw_customers_path, method: :patch %>
+    </div>
+</div>
