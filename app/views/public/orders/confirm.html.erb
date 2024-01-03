@@ -1,0 +1,24 @@
+<h2>注文情報確認</h2>
+<table>
+    <tr>
+        <th>商品名</th>
+        <th>単価(税込)</th>
+        <th>数量</th>
+        <th>小計</th>
+    </tr>
+    <% @cart_items.each do |cart_item| %>
+    <tr>
+        <td><%= image_tag cart_item.item.get_item_image(100, 100) %><%= cart_item.item.name %></td>
+        <td><%= cart_item.item.add_tax_included_price.to_s(:delimited) %></td>
+        <td><%= cart_item.amount %></td>
+        <td><%= cart_item.subtotal.to_s(:delimited) %></td>
+    </tr>
+    <% @total_amount += cart_item.subtotal %>
+    <% end %>
+</table>
+<!--ここで終わった-->
+<table>
+    <tr>
+        <th>送料</th>
+    </tr>
+</table>
