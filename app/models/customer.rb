@@ -3,7 +3,10 @@ class Customer < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-         
+  
+  has_many :cart_items, dependent: :destroy
+  has_many :orders, dependent: :destroy
+  
   def status_label
     is_active? ? '有効' : '退会'
   end
@@ -14,5 +17,9 @@ class Customer < ApplicationRecord
   
   def fullname_kana
     last_name_kana + "　" + first_name_kana
+  end
+  
+  def address_display
+    "〒" + postal_code + " " + address
   end
 end
