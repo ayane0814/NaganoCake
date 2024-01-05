@@ -7,9 +7,11 @@ class Public::OrdersController < ApplicationController
     
     def confirm
         @order = Order.new(order_params)
+        @order.shipping_fee = 800
+        @order.address_name = current_customer.fullname
         @order.post_code = current_customer.postal_code
         @order.address = current_customer.address
-        @order.address_name = current_customer.fullname
+        @order.customer_id = current_customer.id
         @cart_items = current_customer.cart_items.all
         @total_amount = 0
     end
@@ -18,6 +20,21 @@ class Public::OrdersController < ApplicationController
     end
     
     def create
+        @order = Order.new(order_params)
+        @order.customer_id = current_customer.id
+        @order.save
+        
+        current_customer.cart_items.each do |cart_item|
+            @order_item = OrderItem.new
+            @order_item.order_id = @order.id
+            @order_item.item_id = cart_item.item_id
+            @order_item.uniti_price_including_tax = cart_item.item.add_tax_included_price
+            @order_item.quantity = cart_item.amount
+            @order_item.save
+        end
+        
+        current_customer.cart_items.destroy_all
+        redirect_to thanks_orders_path
     end
     
     def index
@@ -29,6 +46,6 @@ class Public::OrdersController < ApplicationController
     private
     
     def order_params
-        params.require(:order).permit(:payment_method)
+        params.require(:order).permit(:customer_id, :address_name, :post_code, :address, :shipping_fee, :billing_amount, :payment_method)
     end
 end

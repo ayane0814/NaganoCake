@@ -6,10 +6,11 @@
     <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
     <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer] %>
 <h3>お届け先</h3>
-    <%= f.radio_button :address_type, "member_address", checked: true %>
-    <%= f.label :address_type, "ご自身の住所" %>
+    <%= f.radio_button :address, :address_display, checked: true %>
+    <%= f.label :address, "ご自身の住所" %>
     <div>
-        <%= current_customer.address_display %>
+        <%= current_customer.address_display %></br>
+        <%= current_customer.fullname %>
     </div>
     <%= f.submit "確認画面" %>
 <% end %>
