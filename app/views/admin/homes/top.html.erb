@@ -1,1 +1,17 @@
-<h1>top</h1>
+<h2>注文履歴一覧</h2>
+<table>
+    <tr>
+        <th>商品ID</th>
+        <th>購入者</th>
+        <th>注文個数</th>
+    </tr>
+    
+    <tr>
+        <% @orders.each do |order| %>
+        <td><%= order.created_at %></td>
+        <td><%= order.customer.fullname %></td>
+        <!--注文個数の求め方-->
+        <td><%= order. %></td>
+        <% end %>
+    </tr>
+</table>
