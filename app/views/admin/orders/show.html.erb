@@ -1,0 +1,46 @@
+<div class="container">
+    <h2>注文履歴詳細</h2>
+    <table class="row">
+        <tr>
+            <th>購入者</th>
+            <td><%= @order.customer.fullname %></td>
+        </tr>
+        
+        <tr>
+            <th>注文日</th>
+            <td><%= @order.created_at.strftime("%Y%m%d") %></td>
+        </tr>
+        
+        <tr>
+            <th>配送先</th>
+            <td>
+                <%= @order.customer.address_display %></br>
+                <%= @order.customer.fullname %>
+            </td>
+        </tr>
+        
+        <tr>
+            <th>支払方法</th>
+            <td><%= @order.payment_method_i18n %></td>
+        </tr>
+    </table>
+    
+    <table class="row">
+        <tr>
+            <th>商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+        </tr>
+        
+        <% @order_items.each do |order_item| %>
+        <tr>
+            <td><%= order_item.item.name %></td>
+            <td><%= order_item.uniti_price_including_tax %></td>
+            <td><%= order_item.quantity %></td>
+            <!--小計をどうやって求めよう-->
+            <td><%=  %></td>
+        </tr>
+        <% end %>
+    </table>
+</div>
