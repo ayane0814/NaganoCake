@@ -3,7 +3,7 @@
     <table class="row">
         <tr>
             <th>購入者</th>
-            <td><%= @order.customer.fullname %></td>
+            <td><%= link_to @order.customer.fullname, admin_customer_path(@order.customer_id) %></td>
         </tr>
         
         <tr>
@@ -25,22 +25,38 @@
         </tr>
     </table>
     
-    <table class="row">
-        <tr>
-            <th>商品名</th>
-            <th>単価(税込)</th>
-            <th>数量</th>
-            <th>小計</th>
-        </tr>
+    <div class="row">
+        <table class="col">
+            <tr>
+                <th>商品名</th>
+                <th>単価(税込)</th>
+                <th>数量</th>
+                <th>小計</th>
+            </tr>
+            
+            <% @order_items.each do |order_item| %>
+            <tr>
+                <td><%= order_item.item.name %></td>
+                <td><%= order_item.uniti_price_including_tax %></td>
+                <td><%= order_item.quantity %></td>
+                <td><%= order_item.subtotal.to_s(:delimited) %></td>
+            </tr>
+            <% end %>
+        </table>
         
-        <% @order_items.each do |order_item| %>
-        <tr>
-            <td><%= order_item.item.name %></td>
-            <td><%= order_item.uniti_price_including_tax %></td>
-            <td><%= order_item.quantity %></td>
-            <!--小計をどうやって求めよう-->
-            <td><%=  %></td>
-        </tr>
-        <% end %>
-    </table>
+        <table class="col">
+            <tr>
+                <th>商品合計</th>
+                <td><%= @total_item_amount.to_s(:delimited) %></td>
+            </tr>
+            <tr>
+                <th>送料</th>
+                <td><%= @order.shipping_fee %></td>
+            </tr>
+            <tr>
+                <th>請求金額合計</th>
+                <td><%= @order.billing_amount.to_s(:delimited) %></td>
+            </tr>
+        </table>
+    </div>
 </div>
