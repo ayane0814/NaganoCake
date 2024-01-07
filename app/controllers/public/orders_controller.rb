@@ -38,9 +38,13 @@ class Public::OrdersController < ApplicationController
     end
     
     def index
+        @orders = Order.includes(:order_items, :customer).all
     end
     
     def show
+        @order = Order.find(params[:id])
+        @order_items = OrderItem.where(order_id: params[:id])
+        @total_item_amount = @order_items.sum{|order_item| order_item.subtotal}
     end
     
     private
