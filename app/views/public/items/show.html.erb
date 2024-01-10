@@ -1,29 +1,30 @@
-<div class="container">
+<!--このページまでレイアウトした-->
+<div class="container pb-5">
     <div class="row">
         <div class="col">
             <%= image_tag @item.get_item_image(200, 200) %>
         </div>
         
         <div class="col">
-            <div class="row">
+            <h2 class="row ">
                 <%= @item.name %>
-            </div>
+            </h2>
             
-            <div class="row">
+            <p class="row">
                 <%= @item.introduction %>
-            </div>
+            </p>
             
-            <div class="row">
-                ￥<%= @item.add_tax_included_price.to_s(:delimited) %><span>（税込）</span>
-            </div>
+            <h4 class="row">
+                ￥<%= @item.add_tax_included_price.to_s(:delimited) %><span class="mb-0">（税込）</span>
+            </h4>
             <%= form_with model: @cart_item, url: cart_items_path(@cart_item), method: :post do |f| %>
             <div class="row">
                 <div class="col">
                     <%= f.hidden_field :item_id, :value => @item.id %>
-                    <%= f.select :amount, *[1..10] %>
+                    <%= f.select :amount, options_for_select((1..10).to_a), {prompt: '個数選択'}, class: "form-select custom-select" %>
                 </div>
                 <div class="col">
-                    <%= f.submit "カートに入れる" %>
+                    <%= f.submit "カートに入れる", class: "btn btn-success mb-5" %>
                 </div>
             </div>
             <% end %>

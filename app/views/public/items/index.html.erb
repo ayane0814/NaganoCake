@@ -1,24 +1,21 @@
 <div class="container">
-    <div>
-        <h2>
-            商品一覧<span>(全<%= @items.count %>件)</span>
-        </h2>
-    </div>
-    
-    <div class="row">
+    <h3>商品一覧<span class="h5">(全<%= @items.count %>件)</span></h3>
+    <div class="row d-flex justify-content-center">
         <% @items.each do |item| %>
             <%= link_to(item_path(item.id)) do %>
                 <div class="col">
                     <div>
                         <%= image_tag item.get_item_image(200, 200) %>
                     </div>
-                    <label><%= item.name %></label>
-                    <div>
-                        <%= item.add_tax_included_price.to_s(:delimited) %>
+                    <label class="text-dark"><%= item.name %></label>
+                    <div class="text-dark">
+                        ￥<%= item.add_tax_included_price.to_s(:delimited) %>
                     </div>
                 </div>
             <% end %>
         <% end %>
     </div>
-    <%= paginate @items %>
+    <div class="d-flex justify-content-center pt-5">
+        <%= paginate @items %>
+    </div>
 </div>
