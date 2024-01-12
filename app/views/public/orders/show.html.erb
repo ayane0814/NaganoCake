@@ -1,41 +1,42 @@
 <div class="container">
-    <h2>注文履歴詳細</h2>
+    <label class="bg-secondary h4 ml-5 px-2">注文履歴詳細</label>
     <div class="row">
-        <div class="col">
-            <h3 class="row">注文情報</h3>
-            <table class="row">
+        <div class="col-7">
+            <label class="h4 font-weight-bold">注文情報</label>
+            <table class="table table-bordered">
                 <tr>
-                    <th>注文日</th>
+                    <th class="col-2 table-secondary">注文日</th>
                     <td><%= @order.created_at.strftime("%Y/%m/%d") %></td>
                 </tr>
                 
                 <tr>
-                    <th>配送先</th>
+                    <th class="table-secondary">配送先</th>
                     <td>
-                        <%= @order.customer.address_display %></br>
+                        <%= @order.customer.postal_code %></br>
+                        <%= @order.customer.address %></br>
                         <%= @order.customer.fullname %>
                     </td>
                 </tr>
                 
                 <tr>
-                    <th>支払方法</th>
+                    <th class="table-secondary">支払方法</th>
                     <td><%= @order.payment_method_i18n %></td>
                 </tr>
             </table>
         </div>
-        <div class="col">
-            <h3 class="row">請求情報</h3>
-            <table class="row">
+        <div class="col-3">
+            <label class="h4 font-weight-bold">請求情報</label>
+            <table class="table table-bordered">
                 <tr>
-                    <th>商品合計</th>
+                    <th class="table-secondary">商品合計</th>
                     <td><%= @total_item_amount.to_s(:delimited) %></td>
                 </tr>
                 <tr>
-                    <th>送料料</th>
+                    <th class="table-secondary">送料料</th>
                     <td><%= @order.shipping_fee %></td>
                 </tr>
                 <tr>
-                    <th>ご請求額</th>
+                    <th class="table-secondary">ご請求額</th>
                     <td><%= @order.billing_amount.to_s(:delimited) %></td>
                 </tr>
             </table>
@@ -43,11 +44,11 @@
     </div>
     
     <div class="row">
-        <div class="col">
-            <h3 class="row">注文内容</h3>
-            <table class="row">
-                <tr>
-                    <th>商品</th>
+        <div class="col-8">
+            <label class="h4 font-weight-bold">注文内容</label>
+            <table class="table table-bordered">
+                <tr class="table-secondary">
+                    <th class="col-7">商品</th>
                     <th>単価(税込)</th>
                     <th>個数</th>
                     <th>小計</th>

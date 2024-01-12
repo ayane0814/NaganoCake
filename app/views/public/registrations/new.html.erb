@@ -1,27 +1,27 @@
 <div class="container my-5">
   <h4 class="col-2 bg-secondary text-center p-0">新規会員登録</h4>
-  <div class="row">
+  <div class="row-10">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= render "public/shared/error_messages", resource: resource %>
     <table class="table table-borderless">
       <tr>
-        <th>名前</th>
-          <td>
+        <th class=" w-25 pr-0">名前</th>
+          <td class="col-3 p-0">
             (姓)
             <%= f.text_field :last_name %>
           </td>
-          <td>
+          <td class="p-0">
             (名)
             <%= f.text_field :first_name %>
           </td>
       </tr>
       <tr>
-        <th>フリガナ</th>
-        <td>
+        <th class="w-25 pr-0">フリガナ</th>
+        <td class="col-3 p-0">
           (セイ)
           <%= f.text_field :last_name_kana %>
         </td>
-        <td>
+        <td class="p-0">
           (メイ)
           <%= f.text_field :first_name_kana %>
         </td>

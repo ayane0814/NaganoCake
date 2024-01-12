@@ -1,17 +1,17 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h2>商品一覧</h2>
+            <label class="bg-secondary h4 ml-5 px-2 mb-3">商品一覧</label>
         </div>
-        
-        <div class="col">
+        <!--フォントアウェイサム入れるとこから初めて-->
+        <div class="col-2 float-right">
             <%= link_to "+", new_admin_item_path %>
         </div>
     </div>
     
-    <div class="row">
-        <table>
-            <tr>
+    <div class="row mx-3">
+        <table class="table">
+            <tr class="table-secondary">
                 <th>商品ID</th>
                 <th>商品名</th>
                 <th>税抜価格</th>
@@ -20,11 +20,13 @@
             <% @items.each do |item| %>
             <tr>
                 <td><%= item.id %></td>
-                <td><%= link_to item.name, admin_item_path(item.id) %></td>
+                <td><%= link_to item.name, admin_item_path(item.id), class: "text-dark" %></td>
                 <td><%= item.price.to_s(:delimited) %></td>
             </tr>
             <% end %>
         </table>
     </div>
-    <%= paginate @items %>
+    <div class="d-flex justify-content-center">
+        <%= paginate @items, class: "" %>
+    </div>
 </div>

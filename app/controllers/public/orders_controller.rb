@@ -38,7 +38,7 @@ class Public::OrdersController < ApplicationController
     end
     
     def index
-        @orders = Order.includes(:order_items, :customer).all
+        @orders = Order.order(created_at: :desc).includes(:order_items, :customer).all
     end
     
     def show
