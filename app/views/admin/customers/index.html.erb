@@ -1,11 +1,8 @@
 <div class="container">
-    <div>
-        <h2>会員一覧</h2>
-    </div>
-    
+    <label class="bg-secondary h4 ml-5 px-2 mb-3">会員一覧</label>
     <div class="row">
-        <table>
-            <tr>
+        <table class="table">
+            <tr class="table-secondary">
                 <th>会員ID</th>
                 <th>氏名</th>
                 <th>メールアドレス</th>
@@ -15,14 +12,14 @@
             <% @customers.each do |customer| %>
             <tr>
                 <td><%= customer.id %></td>
-                <td><%= link_to customer.last_name + customer.first_name, admin_customer_path(customer) %></td>
+                <td><%= link_to customer.last_name + customer.first_name, admin_customer_path(customer), class: "text-dark" %></td>
                 <td><%= customer.email %></td>
                 <td><%= customer.status_label %></td>
             </tr>
             <% end %>
         </table>
     </div>
-    <div>
+    <div class="d-flex justify-content-center">
         <%= paginate @customers %>
     </div>
 </div>

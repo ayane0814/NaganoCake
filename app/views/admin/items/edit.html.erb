@@ -1,53 +1,33 @@
 <div class="container">
-    <div>
-        <h2>商品編集</h2>
-    </div>
-    
-    <div class="row">
-        <%= form_with model: @item, url: admin_item_path(@item), method: :patch do |f| %>
-            <div class="form-group row">
-                <div class="col">
-                    <label>商品画像</label>
-                </div>
-                <div class="col">
-                    <%= f.file_field :item_image, accept: "image/*" %>
-                </div>
-            </div>
-            
-            <div class="form-group row">
-                <div class="col">
-                    <label>商品名</label>
-                </div>
-                <div class="col">
-                    <%= f.text_field :name %>
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col">
-                        <label>商品説明</label>
-                </div>
-                <div class="col">
-                    <%= f.text_area :introduction %>
-                </div>
-            </div>
-            
-            <div class="form-group row">
-                <div class="col">
-                    <label>税抜価格</label>
-                </div>
-                <div class="col">
-                    <div class="input-group">
-                        <%= f.number_field :price, class: "form-control" %>
-                        <div class="input-group-append">
-                            <span>円</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="row">
-                <%= f.submit "変更を保存" %>
-            </div>
-        <% end %>
+    <label class="bg-secondary h4 ml-5 px-2 mb-3">商品編集</label>
+    <div class="row d-flex justify-content-center">
+        <table class="col-6">
+            <%= form_with model: @item, url: admin_item_path(@item), method: :patch do |f| %>
+                <tr>
+                    <th class="col">商品画像</th>
+                    <td><%= f.file_field :item_image, accept: "image/*" %></td>
+                </tr>
+                
+                <tr>
+                    <th class="col">商品名</th>
+                    <td><%= f.text_field :name %></td>
+                </tr>
+                
+                <tr>
+                    <th class="col">商品説明</th>
+                    <td><%= f.text_area :introduction, class: "form-control" %></td>
+                </tr>
+                
+                <tr>
+                    <th class="col">税抜価格</th>
+                    <td><%= f.number_field :price %>円</td>
+                </tr>
+                
+                <tr>
+                    <th></th>
+                    <td><%= f.submit "変更を保存", class: "btn btn-success px-4 mt-3" %></td>
+                </tr>
+            <% end %>
+        </table>
     </div>
 </div>

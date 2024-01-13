@@ -8,7 +8,8 @@ class Customer < ApplicationRecord
   has_many :orders, dependent: :destroy
   
   def status_label
-    is_active? ? '有効' : '退会'
+    status_class = is_active? ? 'text-success' : 'text-secondary'
+    "<span class='#{status_class}'>#{is_active? ? '有効' : '退会'}</span>".html_safe
   end
   
   def fullname

@@ -1,48 +1,36 @@
 <div class="container">
-    <div>
-        <h2>商品詳細</h2>
-    </div>
-    
-    <div class="row">
-        <div class="col">
+    <label>商品詳細</label>
+    <div class="row d-flex justify-content-center">
+        <div class="col-3">
             <%= image_tag @item.get_item_image(200, 200) %>
         </div>
         
-        <div class="col">
-            <div class="row">
-                <div class="col">
-                    <label>商品名</label>
-                </div>
-                <div class="col">
-                    <%= @item.name %>
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="col">
-                    <label>商品説明</label>
-                </div>
-                <div class="col">
-                    <%= @item.introduction %>
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="col">
-                    <label>
+        <div class="col-5">
+            <table>
+                <tr>
+                    <th class="col-3 p-0">商品名</th>
+                    <td><%= @item.name %></td>
+                </tr>
+                
+                <tr>
+                    <th>商品説明</th>
+                    <td><%= @item.introduction %></td>
+                </tr>
+                
+                <tr>
+                    <th>
                         税込価格</br>
                         (税抜価格)
-                    </label>
-                </div>
-                <div class="col">
-                    <%= @item.add_tax_included_price.to_s(:delimited) %>
-                    <span>(<%= @item.price.to_s(:delimited) %>)円</span>
-                </div>
-            </div>
-            
-            <div class="row">
-                <%= link_to "編集する", edit_admin_item_path %>
-            </div>
+                    </th>
+                    <td>
+                        <%= @item.add_tax_included_price.to_s(:delimited) %>
+                        <span>(<%= @item.price.to_s(:delimited) %>)円</span>
+                    </td>
+                </tr>
+            </table>
         </div>
+    </div>
+    <div class="d-flex justify-content-center mt-3">
+        <%= link_to "編集する", edit_admin_item_path, class: "btn btn-success px-4" %>
     </div>
 </div>
