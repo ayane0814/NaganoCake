@@ -33,9 +33,10 @@ Rails.application.routes.draw do
         delete "destroy_all"
       end
     end
+    post 'orders/confirm', to:
+    'orders#confirm'
     resources :orders, only: [:new, :create, :index, :show] do
       collection do
-        post "confirm"
         get "thanks"
       end
     end

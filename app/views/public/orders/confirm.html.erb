@@ -9,6 +9,7 @@
                     <th>数量</th>
                     <th>小計</th>
                 </tr>
+                
                 <% @cart_items.each do |cart_item| %>
                 <tr>
                     <td><%= image_tag cart_item.item.get_item_image(50, 50) %><%= cart_item.item.name %></td>

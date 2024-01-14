@@ -7,6 +7,7 @@ class Public::OrdersController < ApplicationController
     
     def confirm
         @order = Order.new(order_params)
+        
         @order.shipping_fee = 800
         @order.address_name = current_customer.fullname
         @order.post_code = current_customer.postal_code

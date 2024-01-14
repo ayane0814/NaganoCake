@@ -5,65 +5,72 @@
     <%= render "public/shared/error_messages", resource: resource %>
     <table class="table table-borderless">
       <tr>
-        <th class=" w-25 pr-0">名前</th>
-          <td class="col-3 p-0">
-            (姓)
+        <th class="w-25">名前</th>
+        <td class="d-flex justify-content-end pr-3">(姓)</td>
+          <td class="col-2">
             <%= f.text_field :last_name %>
           </td>
-          <td class="p-0">
-            (名)
+          <td class="d-flex justify-content-end pr-3">(名)</td>
+          <td class="col-2">
             <%= f.text_field :first_name %>
           </td>
       </tr>
       <tr>
-        <th class="w-25 pr-0">フリガナ</th>
-        <td class="col-3 p-0">
-          (セイ)
+        <th class="pr-0">フリガナ</th>
+        <td class="d-flex justify-content-end pr-0">(セイ)</td>
+        <td class="col-2">
           <%= f.text_field :last_name_kana %>
         </td>
-        <td class="p-0">
-          (メイ)
+        <td class="d-flex justify-content-end pr-0">(メイ)</td>
+        <td class="col-2">
           <%= f.text_field :first_name_kana %>
         </td>
       </tr>
       <tr>
         <th>メールアドレス</th>
+        <td></td>
         <td>
           <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
         </td>
       </tr>
       <tr>
         <th>郵便番号(ハイフンなし)</th>
+        <td></td>
         <td>
           <%= f.text_field :postal_code %>
         </td>
       </tr>
       <tr>
         <th>住所</th>
-        <td colspan="2">
-          <%= f.text_field :address, size: "60x20" %>
+        <td></td>
+        <td>
+          <%= f.text_field :address %>
         </td>
       </tr>
       <tr>
         <th>電話番号(ハイフンなし)</th>
+        <td></td>
         <td>
           <%= f.text_field :telephone_number %>
         </td>
       </tr>
       <tr>
         <th>パスワード(6文字以上)</th>
+        <td></td>
         <td>
           <%= f.password_field :password, autocomplete: "new-password" %>
         </td>
       </tr>
       <tr>
         <th>パスワード(確認用)</th>
+        <td></td>
         <td>
           <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
         </td>
       </tr>
       <tr>
         <th></th>
+        <td></td>
         <td>
           <%= f.submit "新規登録", class: "btn btn-success d-grid gap-2 col-8" %>
         </td>
